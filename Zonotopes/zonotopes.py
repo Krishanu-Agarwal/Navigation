@@ -6,7 +6,7 @@ import polytope as pc
 from scipy.optimize import minimize
 from scipy.linalg import block_diag
 
-class Zonotope:
+class Zonotope():
     def __init__(self, center, generator):
         """
         Creates a Zonotope with given Centers and Generators
@@ -132,7 +132,6 @@ class Zonotope:
                 G /= np.linalg.norm(G,axis=0)
         D = np.sum(np.abs(G.T@self.generator.T),axis=1)
         d = G.T@self.center
-        
         return np.hstack([D+d,D-d])
     
     def lpcontains(self,point):
